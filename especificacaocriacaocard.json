@@ -1,0 +1,318 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Especificação criação de um card",
+    "description": "Especificação criação de um card",
+    "contact": {
+      "email": "avelinorsilvaneto@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "paths": {
+    "/card": {
+      "get": {
+        "summary": "Recuperar todos os cards",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "Token no header",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "string"
+              }
+            },
+            "example": "20cdf35b5b56f80b5826a71adec2529df68e1685b352413cd0cd8718d4e15ac4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/body_response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Dados request enviados incorretos"
+          },
+          "401": {
+            "description": "Token invalid, inexistente ou expirado"
+          },
+          "500": {
+            "description": "Erro no servidor"
+          }
+        }
+      },
+      "post": {
+        "summary": "Cria um novo card",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "Token no header",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "string"
+              }
+            },
+            "example": "20cdf35b5b56f80b5826a71adec2529df68e1685b352413cd0cd8718d4e15ac4"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/body_request"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Criado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/body_response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Dados request enviados incorretos"
+          },
+          "401": {
+            "description": "Token invalid, inexistente ou expirado"
+          },
+          "500": {
+            "description": "Erro no servidor"
+          }
+        }
+      }
+    },
+    "/card/{id}": {
+      "get": {
+        "summary": "Recuperar um card pelo id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id de identificação do card",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "header",
+            "description": "Token no header",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "string"
+              }
+            },
+            "example": "20cdf35b5b56f80b5826a71adec2529df68e1685b352413cd0cd8718d4e15ac4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/body_response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Dados request enviados incorretos"
+          },
+          "401": {
+            "description": "Token invalid, inexistente ou expirado"
+          },
+          "404": {
+            "description": "Recurso {id} não encontrado"
+          },
+          "500": {
+            "description": "Erro no servidor"
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualizar um card pelo id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id de identificação do card",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "header",
+            "description": "Token no header",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "string"
+              }
+            },
+            "example": "20cdf35b5b56f80b5826a71adec2529df68e1685b352413cd0cd8718d4e15ac4"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/body_request"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Aceito"
+          },
+          "400": {
+            "description": "Dados request enviados incorretos"
+          },
+          "401": {
+            "description": "Token invalid, inexistente ou expirado"
+          },
+          "404": {
+            "description": "Recurso {id} não encontrado"
+          },
+          "500": {
+            "description": "Erro no servidor"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Excluir um card pelo id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id de identificação do card",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "header",
+            "description": "Token no header",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "string"
+              }
+            },
+            "example": "20cdf35b5b56f80b5826a71adec2529df68e1685b352413cd0cd8718d4e15ac4"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Sem conteudo"
+          },
+          "400": {
+            "description": "Dados request enviados incorretos"
+          },
+          "401": {
+            "description": "Token invalid, inexistente ou expirado"
+          },
+          "404": {
+            "description": "Recurso {id} não encontrado"
+          },
+          "500": {
+            "description": "Erro no servidor"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "body_response": {
+        "required": [
+          "descricaocard",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "descricaocard": {
+            "type": "string",
+            "example": "Especificacao criacao de um card"
+          }
+        }
+      },
+      "body_request": {
+        "required": [
+          "descricaocard",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "descricaocard": {
+            "type": "string",
+            "example": "Especificao criacao de um card"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Especificação Autenticação de usuário",
+    "description": "Especificação Autenticação de usuário",
+    "contact": {
+      "email": "avelinorsilvaneto@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "summary": "Login do usuário",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/body_request"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/body_response"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Dados request enviados incorretos"
+          },
+          "401": {
+            "description": "Password incorreto"
+          },
+          "404": {
+            "description": "Usuário não encontrado"
+          },
+          "500": {
+            "description": "Erro no servidor"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "body_request": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "minimum": 1,
+            "type": "string",
+            "format": "email",
+            "example": "admin"
+          },
+          "password": {
+            "minimum": 1,
+            "type": "string",
+            "format": "password",
+            "example": "123"
+          }
+        }
+      },
+      "body_response": {
+        "required": [
+          "id",
+          "token"
+        ],
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "example": "20cdf35b5b56f80b5826a71adec2529df68e1685b352413cd0cd8718d4e15ac4"
+          },
+          "account": {
+            "type": "string",
+            "example": "{\"id\":1,\"email\":\"avelinorsilvaneto@gmail.com\"}"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+-Qual é o path?
+/card GET
+/card POST
+/card/{id} GET
+/card/{id} PUT
+/card/{id} DELETE
+-Quais são os parâmetros do request?
+token HEADER
+{id} card PATH quando necessário
+- Qual é o formato da resposta?
+JSON
+- Qual é o formato do request?
+JSON
+- Qual é o request body (corpo da requisição)?
+email e password
+- Qual é o response body (corpo da resposta) ?
+token, id usuario
+- Qual é o status da resposta para operação de sucesso?
+200 - OK GET
+201 - Criado POST
+202 - Aceito
+204 - Sem conteúdo
+- Qual é a resposta para operação de erro no request?
+400 - Dados Request enviados incorretos
+- Qual é resposta para operação e erro de regra de negócio?
+401 - Token invalido, inexistente ou expirado
+404 - Recurso {id} não encontrado
+- Qual é a resposta para operação de erro no servidor?
+500 - Erro no servidor
